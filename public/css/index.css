@@ -1,0 +1,12 @@
+body {
+  height: 400px;
+  width: 340px;
+
+  background: transparent;
+  font-family: sans-serif;
+  display: grid;
+}
+
+.message {
+  color: white;
+}
