@@ -54,6 +54,7 @@ ipcRenderer.on('message', (_, data) => {
   else chatbox.appendChild(div);
 
   setInterval(() => {
-    amount[amount.length].remove();
+    const chat = document.getElementsByClassName('chat');
+    chat[chat.length - 1].remove();
   }, 8_000);
 });
