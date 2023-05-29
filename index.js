@@ -4,10 +4,19 @@ const { app, BrowserWindow, Menu, Tray } = require('electron');
 const Path = require('node:path');
 const { Client } = require('tmi.js');
 const { parse } = require('simple-tmi-emotes');
+const { spawnSync } = require('node:child_process');
 const fs = require('node:fs');
+const os = require('node:os');
 
-if (!fs.existsSync(`${process.cwd()}/config.json`)) { fs.writeFileSync(`${process.cwd()}/config.json`, JSON.stringify({ channels: [] }, null, 4)); process.exit() }
-const config = require(`${process.cwd()}/config.json`);
+const cfgPath = `C:/Users/${os.userInfo().username}/Documents/chatOverlay`;
+
+if (!fs.existsSync(`${cfgPath}/config.json`)) {
+  fs.mkdirSync(cfgPath);
+  fs.writeFileSync(`${cfgPath}/config.json`, JSON.stringify({ channels: [] }, null, 4));
+  spawnSync(`explorer ${cfgPath}`);
+  process.exit();
+}
+const config = require(`${cfgPath}/config.json`);
 
 /** @type {BrowserWindow} */
 var MainWindow;
